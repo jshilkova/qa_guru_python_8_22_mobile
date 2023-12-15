@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "qa-guru-python-8-21-mobile"
+version = "0.1.0"
+description = "Testing a mobile app"
+authors = ["Julia Shilkova <yulia.shikova@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+appium-python-client = "^3.1.0"
+allure-pytest = "^2.13.2"
+selene = "^2.0.0rc4"
+pydantic = "^2.5.2"
+python-dotenv = "^1.0.0"
+pydantic-settings = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
