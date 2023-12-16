@@ -1,9 +1,12 @@
+import pytest
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
 
 
-def test_search():
+@pytest.mark.android
+@pytest.mark.all
+def test_search(android_mobile_management):
     with step('Skip intro'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
 
@@ -17,7 +20,9 @@ def test_search():
         results.first.should(have.text('Appium'))
 
 
-def test_open_article():
+@pytest.mark.android
+@pytest.mark.all
+def test_open_article(android_mobile_management):
     with step('Skip intro'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
 

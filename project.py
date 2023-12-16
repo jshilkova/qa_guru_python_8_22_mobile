@@ -5,7 +5,6 @@ from pydantic_settings import BaseSettings
 
 
 class Config(BaseSettings):
-    context: Literal['android', 'ios'] = 'ios'
     timeout: float = 10.0
     driver_remote_url: str = 'http://hub.browserstack.com/wd/hub'
     bs_user_name: str
