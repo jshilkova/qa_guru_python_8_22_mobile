@@ -10,9 +10,9 @@ python = "^3.10"
 appium-python-client = "^3.1.0"
 allure-pytest = "^2.13.2"
 selene = "^2.0.0rc4"
-pydantic = "^2.5.2"
 python-dotenv = "^1.0.0"
 pydantic-settings = "^2.1.0"
+pytest = "^7.4.3"
 
 
 [build-system]
