@@ -1,13 +1,13 @@
 import pytest
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
-from selene import browser, have
+from selene import browser, have, be
 
 
 @pytest.mark.android
 @pytest.mark.all
-def test_search(android_mobile_management):
-    with step('Skip intro'):
+def test_search(mobile_management):
+    with step('Skip onboarding'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
 
     with step('Type search'):
@@ -22,8 +22,8 @@ def test_search(android_mobile_management):
 
 @pytest.mark.android
 @pytest.mark.all
-def test_open_article(android_mobile_management):
-    with step('Skip intro'):
+def test_open_article(mobile_management):
+    with step('Skip onboarding'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()
 
     with (step('Search article')):
@@ -33,4 +33,40 @@ def test_open_article(android_mobile_management):
                     ).element_by(have.text('Pythonidae')).click()
 
     with step('Verify article title'):
-        browser.element((AppiumBy.ACCESSIBILITY_ID, 'Pythonidae'))
+        browser.element((AppiumBy.ACCESSIBILITY_ID, 'Pythonidae')).should(be.present)
+
+@pytest.mark.android
+@pytest.mark.all
+def test_onboarding_path(mobile_management):
+    with step('Verify language selection screen opened'):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/primaryTextView')).should(have.text('over 300 languages'))
+    with step('Verify add language control presents'):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/addLanguageButton')).should(be.clickable)
+
+    with (step('Continue to the second screen')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_forward_button')).click()
+    with (step('Verify feed customizing screen opened')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/primaryTextView')
+                        ).should(have.text('New ways to explore'))
+
+    with (step('Continue to the third screen')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_forward_button')).click()
+    with (step('Verify reading lists screen opened')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/primaryTextView')
+                        ).should(have.text('Reading lists with sync'))
+
+    with (step('Continue to the fourth screen')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_forward_button')).click()
+    with (step('Verify send data screen opened')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/primaryTextView')
+                        ).should(have.text('Send anonymous data'))
+
+    with (step('Click accept button')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/acceptButton')).click()
+    with (step('Verify search input is on the screen')):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/search_container')
+                        ).should(be.present)
+
+
+
+
