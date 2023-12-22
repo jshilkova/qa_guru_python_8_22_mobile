@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "qa-guru-python-8-21-mobile"
+name = "qa-guru-python-8-22-mobile"
 version = "0.1.0"
 description = "Testing a mobile app"
 authors = ["Julia Shilkova <yulia.shikova@gmail.com>"]

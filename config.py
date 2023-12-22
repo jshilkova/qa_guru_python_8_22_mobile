@@ -19,7 +19,7 @@ class Config(BaseSettings):
 
     udid: str = os.getenv('UDID', '')
     appWaitActivity: str = os.getenv('APP_WAIT_ACTIVITY', '')
-    app_local: str = utils.file.abs_path_from_project(os.getenv('APP'))
+    app_local: str = utils.file_path.abs_path_from_project(os.getenv('APP'))
 
     app_bs: str = os.getenv('APP')
 
@@ -27,7 +27,7 @@ class Config(BaseSettings):
     build_name: str = os.getenv('BUILD_NAME', '')
     session_name: str = os.getenv('SESSION_NAME', '')
 
-    load_dotenv(dotenv_path=utils.file.abs_path_from_project('.env.credentials'))
+    load_dotenv(dotenv_path=utils.file_path.abs_path_from_project('.env.credentials'))
     bs_user_name: str = os.getenv('BS_USERNAME')
     bs_password: str = os.getenv('BS_PASSWORD')
 

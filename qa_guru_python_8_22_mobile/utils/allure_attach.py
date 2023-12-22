@@ -2,7 +2,7 @@ import allure
 from selene import browser
 
 
-def attach_bstack_video(session_id):
+def bstack_video(session_id):
     from config import config
     import requests
     bstack_session = requests.get(
@@ -23,7 +23,7 @@ def attach_bstack_video(session_id):
     )
 
 
-def attach_screenshot():
+def screenshot():
     allure.attach(
         browser.driver.get_screenshot_as_png(),
         name='screenshot',
@@ -31,7 +31,7 @@ def attach_screenshot():
     )
 
 
-def attach_screen_xml_dump():
+def screen_xml_dump():
     allure.attach(
         browser.driver.page_source,
         name='screen xml dump',

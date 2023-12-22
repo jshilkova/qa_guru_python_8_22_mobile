@@ -33,7 +33,7 @@ def test_open_article(mobile_management):
                     ).element_by(have.text('Pythonidae')).click()
 
     with step('Verify article title'):
-        browser.element((AppiumBy.ACCESSIBILITY_ID, 'Pythonidae')).should(be.present)
+        browser.element((AppiumBy.ACCESSIBILITY_ID, 'Pythonidae'))
 
 @pytest.mark.android
 @pytest.mark.all

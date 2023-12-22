@@ -1,1 +1,1 @@
-from . import allure, file
+from . import allure_attach, file_path
