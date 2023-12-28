@@ -2,7 +2,6 @@ import os
 from typing import Literal
 from appium.options.android import UiAutomator2Options
 
-from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
 from qa_guru_python_8_22_mobile import utils
@@ -27,9 +26,8 @@ class Config(BaseSettings):
     build_name: str = os.getenv('BUILD_NAME', '')
     session_name: str = os.getenv('SESSION_NAME', '')
 
-    load_dotenv(dotenv_path=utils.file_path.abs_path_from_project('.env.credentials'))
-    bs_user_name: str = os.getenv('BS_USERNAME')
-    bs_password: str = os.getenv('BS_PASSWORD')
+    bs_user_name: str = os.getenv('BS_USERNAME', '')
+    bs_password: str = os.getenv('BS_PASSWORD', '')
 
     def to_driver_options(self, context) -> UiAutomator2Options:
         options = UiAutomator2Options()
